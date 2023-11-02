@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projectX.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,19 @@ namespace projectX
         {
             InitializeComponent();
             FrmMain.Navigate(new Pages.PageAuto());
+            DbConnect.entObj = new PRAKTIKAEntities();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FrmMain.GoBack();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Вы на начальной странице!");
+            }
         }
     }
 }

@@ -14,11 +14,11 @@
 
         <Grid Grid.Row="0" Background="#FFFFFF" >
             <Image Source="D:\41п\УЧЕБНАЯ ПРАКТИКА\УП-05 АБАЕВ БАКОВ\projectX\projectX\Materials\Одежда для ручек.png" Width="75" Margin="342,0,342,42"></Image>
-            <Button Margin="660,0,0,0" Background="#FFFFFF" BorderBrush="#Ffffff" FontSize="22" Width="100">Назад</Button>
+            <Button Margin="660,0,0,0" Background="#FFFFFF" BorderBrush="#Ffffff" FontSize="22" Width="100" Click="Button_Click">Назад</Button>
             <TextBlock FontSize="22" Margin="289,79,260,-3">Одежда для ручек</TextBlock>
         </Grid>
 
-        <Frame Name="FrmMain" Grid.Row="1" Background="#B3F4E9">
+        <Frame Name="FrmMain" Grid.Row="1" Background="#B3F4E9" NavigationUIVisibility="Hidden">
             
         </Frame>
         

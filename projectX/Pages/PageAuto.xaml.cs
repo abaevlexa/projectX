@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projectX.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,12 +28,46 @@ namespace projectX.Pages
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var userObj = DbConnect.entObj.User.FirstOrDefault(x =>
+                x.Name == TxbLog.Text && x.Password == TxbPas.Text);
 
+                if (userObj == null)
+                {
+                    MessageBox.Show("Такого пользователя нет", "Ошибка Авторизации",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    Uri uri = new Uri("/Pages/PageReg.xaml", UriKind.Relative);
+                    this.NavigationService.Navigate(uri);
+                }
+                else if (userObj.IdRole == 1)
+                {
+
+                    MessageBox.Show("Здравствуйте , " + userObj.Name + " !", "Уведомление",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                    Uri uri = new Uri("/Pages/PageMaterialList.xaml", UriKind.Relative);
+                    this.NavigationService.Navigate(uri);
+
+                }
+                else
+                {
+                    MessageBox.Show("Здравствуйте , " + userObj.Name + " !", "Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                    Uri uri = new Uri("/Pages/PageMaterialList.xaml", UriKind.Relative);
+                    this.NavigationService.Navigate(uri);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка" + ex.Message.ToString(), "Критическая работа приложения",
+                MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
-
+            Uri uri = new Uri("/Pages/PageReg.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
         }
     }
 }
